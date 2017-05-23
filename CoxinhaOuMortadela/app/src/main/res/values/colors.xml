@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="goodBlue">#a9c9d1</color>
+    <color name="goodBlueLight">#edfbff</color>
+    <color name="quiz_navy_blue_border">#406f7c</color>
+
+
+    <color name="coxinha">#ffb23e</color>
+    <color name="super_coxinha">#d27a23</color>
+    <color name="mortadela">#c0565c</color>
+    <color name="super_mortadela">#b8454b</color>
+    <color name="coxinha_de_mortadela">#df844d</color>
+
+
+    <color name="pie_red">#d75960</color>
+    <color name="pie_yellow">#ffbc57</color>
+
+
+    // red #c0565c
+
+
+</resources>

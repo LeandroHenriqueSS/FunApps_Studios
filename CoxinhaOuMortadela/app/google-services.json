@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "31712113621",
+    "firebase_url": "https://coxinha-ou-mortadela.firebaseio.com",
+    "project_id": "coxinha-ou-mortadela",
+    "storage_bucket": "coxinha-ou-mortadela.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31712113621:android:75db213fb83307a3",
+        "android_client_info": {
+          "package_name": "com.lh_freeapps.coxinhaoumortadela"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31712113621-vev1ilu2p6jr9j4otoqk5qq4kmn6nve6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOHzrS9UkyplRFy-98NE-qUhdlfoepxm4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

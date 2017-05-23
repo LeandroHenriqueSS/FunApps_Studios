@@ -1,0 +1,51 @@
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:con="com.lh_freeapps.coxinhaoumortadela.ui.statistics.BarChartFragment">
+
+
+    <!-- Blank View --> <View
+    android:id="@+id/begin_of_chart_area"
+    android:layout_width="fill_parent"
+    app:layout_heightPercent="5%" />
+
+
+    <com.github.mikephil.charting.charts.HorizontalBarChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/begin_of_chart_area"
+        app:layout_heightPercent="80%" />
+
+
+    <!-- Blank View --> <View
+    android:id="@+id/end_of_chart_area"
+    android:layout_width="fill_parent"
+    android:layout_below="@+id/chart"
+    app:layout_heightPercent="5%" />
+
+
+    <ImageButton
+        android:id="@+id/bt_info"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/end_of_chart_area"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="@null"
+        android:onClick="onClickShowInfo"
+        android:scaleType="centerInside"
+        android:src="@drawable/bt_info"
+        app:layout_heightPercent="8%" />
+
+
+    <!-- Blank View -->
+    <View
+        android:id="@+id/end_page"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/bt_info"
+        app:layout_heightPercent="2%" />
+
+
+</android.support.percent.PercentRelativeLayout>
+

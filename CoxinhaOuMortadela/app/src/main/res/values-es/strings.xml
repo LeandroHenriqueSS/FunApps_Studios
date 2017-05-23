@@ -1,0 +1,57 @@
+<resources>
+
+    <!-- app name -->
+    <string name="app_name">Coxinha ou Mortadela</string>
+
+    <!-- facebook ID -->
+    <string name="facebook_app_id">622654374607218</string>
+
+
+    <!-- descriptions for the ResultActivity -->
+    <string name="result_mortadela">Mortadela. Sua ideologia de esquerda é predomitante, apesar de alguns pensamentos de direita. A luta a favor da igualdade social e do direito dos cidadões mais pobres é a sua principal bandeira</string>
+    <string name="result_super_mortadela">Super Mortadela. Sua ideologia de esquerda é clara e expressiva.  Para você, a luta por igualdade social e direitos dos cidadões mais pobres é de vital importancia para o futuro do país</string>
+
+    <string name="result_coxinha">Coxinha. Sua ideologia de direita é predomitante, apesar de alguns pensamentos de esquerda. Para você, a luta por um sistema mais justo e eficiente é de vital importancia para o futuro do país</string>
+    <string name="result_super_coxinha">Super Coxinha. Sua ideologia de direita é clara e expressiva. Seu senso afiado de justiça é sua principal bandeira, o que lhe faz lutar por leis bem mais rígidas e um sistema de governo mais eficiente</string>
+
+    <string name="result_draw">Coxinha de Mortadela (Centro). Você é uma perfeita combinação que reúne pensamentos de ambas ideologias. Seus ideais e anseios são particulares e estão aquém de ideologias extremistas</string>
+
+
+    <!-- addmob ID -->
+    <string name="interstitial_ad_unit_id">ca-app-pub-9705657475519972/3639878849</string>
+    <string name="interstitial_test">ca-app-pub-3940256099942544/1033173712</string>
+
+    <!-- content descriptions -->
+    <string name="cd_main_logo">Logo da tela principal</string>
+    <string name="cd_simple_logo">Logo Coxinha ou Mortadela</string>
+    <string name="cd_bt_no">Botão para discordar</string>
+    <string name="cd_bt_yes">Botão para concordar</string>
+    <string name="cd_bt_back">Voltar</string>
+    <string name="cd_bt_share">Compartilhar</string>
+    <string name="cd_bt_share_facebook">Compartilhar no facebook</string>
+    <string name="cd_result">Imagem de Coxinha ou Mortadela</string>
+
+    <!-- labels -->
+    <string name="bt_start_quiz">Start</string>
+    <string name="bt_my_result">Result</string>
+    <string name="bt_rank">Statistics</string>
+    <string name="tv_sentence">Sou a favor da prisão perpétua ou pena de morte</string>
+    <string name="tv_current_sentence">Sou a favor da prisão perpétua ou pena de morte</string>
+    <string name="tv_percentage">50%</string>
+    <string name="tv_result_description">Super Mortadela. Sua ideologia de esquerda é clara e expressiva.  Para você, A luta por igualdade social e direitos dos cidadões mais pobres é de vital importancia para o futuro do país.</string>
+    <string name="sharing_chooser">Share via</string>
+    <string name="verified_users">"Verified Users: "</string>
+    <string name="general">"General"</string>
+    <string name="specific">"Specific"</string>
+
+
+    <!-- info -->
+    <string name="info" formatted="false"><b>Coxinha de Mortadela:</b> 45pt a 55pt Cox. ou Mort.\n\n<b>Super Coxinha:</b> \u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020 ≥ 80pt Coxinha\n\n<b>Super Mortadela:</b> \u0020\u0020\u0020\u0020\u0020 ≥ 80pt Mortadela</string>
+
+
+    <!-- erros -->
+    <string name="er_facebook_not_found">Facebook is not installed</string>
+    <string name="er_no_data">No data saved yet</string>
+
+
+</resources>
