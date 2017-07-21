@@ -21,5 +21,7 @@ public interface QuizContract {
 
         void onClickNoButton();
 
+        void cleanData();
+
     }
 }

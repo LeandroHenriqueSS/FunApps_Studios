@@ -51,7 +51,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:background="@drawable/button_color_shape"
-                android:onClick="onClickStartQuiz"
                 android:padding="10dp"
                 android:text="@string/bt_start_quiz"
                 android:textSize="24sp" />
@@ -72,7 +71,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:background="@drawable/button_color_shape"
-                android:onClick="onClickShowResultActivity"
                 android:padding="10dp"
                 android:text="@string/bt_my_result"
                 android:textSize="24sp" />
@@ -89,12 +87,11 @@
             android:weightSum="5">
 
             <Button
-                android:id="@+id/bt_ranks"
+                android:id="@+id/bt_statistics"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:background="@drawable/button_color_shape"
-                android:onClick="onClickShowStatistics"
                 android:padding="10dp"
                 android:text="@string/bt_rank"
                 android:textSize="24sp" />

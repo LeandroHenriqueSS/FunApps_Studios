@@ -9,21 +9,21 @@
     <!-- Blank View --> <View
     android:id="@+id/begin_of_chart_area"
     android:layout_width="fill_parent"
-    app:layout_heightPercent="5%" />
+    app:layout_heightPercent="3%" />
 
 
     <com.github.mikephil.charting.charts.HorizontalBarChart
         android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_below="@+id/begin_of_chart_area"
-        app:layout_heightPercent="80%" />
+        app:layout_heightPercent="82%" />
 
 
     <!-- Blank View --> <View
     android:id="@+id/end_of_chart_area"
     android:layout_width="fill_parent"
     android:layout_below="@+id/chart"
-    app:layout_heightPercent="5%" />
+    app:layout_heightPercent="3%" />
 
 
     <ImageButton
@@ -36,15 +36,15 @@
         android:onClick="onClickShowInfo"
         android:scaleType="centerInside"
         android:src="@drawable/bt_info"
-        app:layout_heightPercent="8%" />
+        app:layout_heightPercent="9%" />
 
 
-    <!-- Blank View -->
-    <View
+
+    <!-- Blank View --> <View
         android:id="@+id/end_page"
         android:layout_width="fill_parent"
         android:layout_below="@+id/bt_info"
-        app:layout_heightPercent="2%" />
+        app:layout_heightPercent="3%" />
 
 
 </android.support.percent.PercentRelativeLayout>

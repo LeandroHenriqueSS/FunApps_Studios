@@ -43,7 +43,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/button_color_shape"
-            android:onClick="onClickStartQuiz"
             android:padding="10dp"
             android:text="@string/bt_start_quiz"
             android:textSize="24sp" />
@@ -63,7 +62,7 @@
 
 
         <Button
-            android:id="@+id/bt_ranks"
+            android:id="@+id/bt_statistics"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

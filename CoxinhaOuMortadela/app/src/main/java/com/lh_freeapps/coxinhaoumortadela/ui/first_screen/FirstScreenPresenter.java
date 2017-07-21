@@ -26,16 +26,25 @@ public class FirstScreenPresenter implements FirstScreenContract.Presenter {
 
     private Context context;
 
+    private static final FirstScreenPresenter presenter = new FirstScreenPresenter();
 
-    public FirstScreenPresenter(BaseView firstScreenView) {
-        this.context = (Context) firstScreenView;
-        this.firstScreenView = (FirstScreenContract.View) firstScreenView;
+
+    public static FirstScreenPresenter getInstance(BaseView view) {
+        presenter.context = (Context) view;
+        presenter.firstScreenView = (FirstScreenContract.View) view;
+
+        return presenter;
     }
+
+
+    private FirstScreenPresenter() {}
+
 
     @Override
     public void startQuizActivity() {
         context.startActivity(new Intent(context, QuizActivity.class));
     }
+
 
     @Override
     public void startResultActivity() {
@@ -60,6 +69,7 @@ public class FirstScreenPresenter implements FirstScreenContract.Presenter {
         // start activity
         context.startActivity(intent);
     }
+
 
     @Override
     public void startStatisticsActivity() {

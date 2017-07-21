@@ -11,14 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lh_freeapps.coxinhaoumortadela.R;
-import com.lh_freeapps.coxinhaoumortadela.di.component.DaggerActivityComponent;
-import com.lh_freeapps.coxinhaoumortadela.di.module.ActivityModule;
 import com.lh_freeapps.coxinhaoumortadela.ui.first_screen.FirstScreenActivity;
-import com.lh_freeapps.coxinhaoumortadela.util.ButtonHighlighterOnTouchListener;
+import com.lh_freeapps.coxinhaoumortadela.util.HighlighterOnTouchListener;
 import com.lh_freeapps.coxinhaoumortadela.util.TextSizeUtility;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ResultActivity extends Activity implements ResultContract.View {
 
@@ -27,7 +26,7 @@ public class ResultActivity extends Activity implements ResultContract.View {
     @BindView(R.id.tvPercentage)  TextView tvPercentage;
     @BindView(R.id.tvDescription) TextView tvDescription;
 
-    @BindView(R.id.resultImg)     ImageView ivResultImg;
+    @BindView(R.id.result_img)    ImageView ivResultImg;
     @BindView(R.id.result_line)   ImageView ivResultLine;
 
     @BindView(R.id.ll_result_bar) LinearLayout llResultBar;
@@ -48,24 +47,18 @@ public class ResultActivity extends Activity implements ResultContract.View {
         int mortadelaLavel = getIntent().getIntExtra("MORTADELA_LEVEL", -1);
         boolean isOnCould  = getIntent().getBooleanExtra("IS_ON_CLOUD", false);
 
-
         // set ImageButton listeners
-        ibBack    .setOnTouchListener(new ButtonHighlighterOnTouchListener());
-        ibShare   .setOnTouchListener(new ButtonHighlighterOnTouchListener());
-        ibFacebook.setOnTouchListener(new ButtonHighlighterOnTouchListener());
+        ibBack    .setOnTouchListener(HighlighterOnTouchListener.getInstance());
+        ibShare   .setOnTouchListener(HighlighterOnTouchListener.getInstance());
+        ibFacebook.setOnTouchListener(HighlighterOnTouchListener.getInstance());
 
         // set text size
         int textSize = TextSizeUtility.getRecommendedTextSize(this);
         tvDescription.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize - 4);
         tvPercentage .setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize + 8);
 
-        // inject mvp-presenter
-        presenter = DaggerActivityComponent.builder()
-                .activityModule(new ActivityModule(this))
-                .build()
-                .getResultPresenter();
-
-        // set params
+        // get mvp-presenter
+        presenter = new ResultPresenter(this);
         presenter.setUserParams(coxinhaLevel, mortadelaLavel, isOnCould);
 
         // set data dynamically
@@ -105,12 +98,14 @@ public class ResultActivity extends Activity implements ResultContract.View {
     }
 
 
-    public void onClickReturnButton(View view) {
+    @OnClick(R.id.bt_back)
+    public void backHome(View view) {
         onBackPressed();
     }
 
-    public void onClickShareButton(View view) {
-        presenter.shareImage(llResult, view);
+    @OnClick({R.id.bt_share, R.id.bt_facebook})
+    public void shareResult(View view) {
+        presenter.shareResult(llResult, view);
     }
 
 

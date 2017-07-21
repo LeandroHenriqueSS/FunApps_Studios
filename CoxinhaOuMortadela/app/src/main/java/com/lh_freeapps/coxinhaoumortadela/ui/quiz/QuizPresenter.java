@@ -23,15 +23,25 @@ public class QuizPresenter implements QuizContract.Presenter {
     private int numMortadelas;
 
 
-    public QuizPresenter(BaseView quizView){
-        this.quizView = (QuizContract.View) quizView;
-        this.context  = (Context) quizView;
+    private static QuizPresenter presenter = new QuizPresenter();
 
+
+    public static QuizPresenter getInstance(BaseView view) {
+        presenter.quizView = (QuizContract.View) view;
+        presenter.context  = (Context) view;
+
+        // update view
+        presenter.quizView.updateSentence(
+                presenter.currentSentenceNumber+1,
+                presenter.maxSentenceNumber,
+                Sentences.getSentence(presenter.currentSentenceNumber));
+
+        return presenter;
+    }
+
+
+    private QuizPresenter(){
         maxSentenceNumber = Sentences.getMaxSentenceNumber();
-        currentSentenceNumber = -1;
-
-        // start quiz
-        nextSentence();
     }
 
 
@@ -63,6 +73,7 @@ public class QuizPresenter implements QuizContract.Presenter {
         nextSentence();
     }
 
+
     @Override
     public void onClickNoButton() {
         // avoid multiple clicks bug
@@ -80,6 +91,13 @@ public class QuizPresenter implements QuizContract.Presenter {
     }
 
 
+    @Override
+    /** Restart quiz values */
+    public void cleanData() {
+        presenter = new QuizPresenter();
+    }
+
+
     private void startResultActivity() {
         // calculate levels
         int coxinhaLevel   = (int) Math.ceil(100*numCoxinhas   / (float) maxSentenceNumber);
@@ -91,7 +109,9 @@ public class QuizPresenter implements QuizContract.Presenter {
         intent.putExtra("MORTADELA_LEVEL", mortadelaLevel);
         intent.putExtra("ON_THE_CLOUD"   , false);
 
+        cleanData();
         context.startActivity(intent);
     }
+
 
 }

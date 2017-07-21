@@ -19,8 +19,12 @@ import com.lh_freeapps.coxinhaoumortadela.di.component.DaggerActivityComponent;
 import com.lh_freeapps.coxinhaoumortadela.di.module.ActivityModule;
 import com.lh_freeapps.coxinhaoumortadela.util.TextSizeUtility;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Leandro on 04/05/2017.
@@ -30,19 +34,27 @@ public class StatisticsActivity extends AppCompatActivity implements StatisticsC
 
     private StatisticsContract.Presenter presenter;
 
+    private Fragment pieChartFragment;
+    private Fragment barChartFragment;
+
     private BottomSheetBehavior bottomSheetBehavior;
 
-    private ProgressBar spinner;
+    @BindView(R.id.progress_spinner) ProgressBar spinner;
+
+    @BindView(R.id.tv_info) TextView tvInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
+        ButterKnife.bind(this);
+
 
         bottomSheetBehavior = BottomSheetBehavior.from(findViewById(R.id.bottom_sheet));
         bottomSheetBehavior.setPeekHeight(0); // hide sheet
+        tvInfo.setTextSize(TextSizeUtility.getRecommendedTextSize(this) - 9);
 
-        ((TextView)findViewById(R.id.tv_info)).setTextSize(TextSizeUtility.getRecommendedTextSize(this) - 9);
 
         // inject mvp-presenter
         presenter = DaggerActivityComponent.builder()
@@ -51,12 +63,19 @@ public class StatisticsActivity extends AppCompatActivity implements StatisticsC
                 .getStatisticsPresenter();
 
 
-        // callback to get data from either server or database
-        presenter.callGetGlobalData();
+        // if the fragments were not set yet, create them from server/database
+        if (getSupportFragmentManager().getFragments().size() == 0) {
+            spinner.setVisibility(View.VISIBLE);
+            presenter.callGetGlobalData();
 
-        // show progress bar (spinner)
-        spinner = (ProgressBar) findViewById(R.id.progress_spinner);
-        spinner.setVisibility(View.VISIBLE);
+        // otherwise, no need to recreate them
+        } else {
+            pieChartFragment = getSupportFragmentManager().getFragments().get(0);
+            barChartFragment = getSupportFragmentManager().getFragments().get(1);
+
+            setupViewPager(pieChartFragment, barChartFragment);
+        }
+
     }
 
 
@@ -64,12 +83,12 @@ public class StatisticsActivity extends AppCompatActivity implements StatisticsC
     public void onGetGlobalDataSucceed(GlobalData globalData) {
         spinner.setVisibility(View.GONE);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager, globalData);
+        pieChartFragment = new PieChartFragment().setGlobalData(globalData);
+        barChartFragment = new BarChartFragment().setGlobalData(globalData);
 
-        TabLayout tlCharts = (TabLayout) findViewById(R.id.tl_charts);
-        tlCharts.setupWithViewPager(viewPager);
+        setupViewPager(pieChartFragment, barChartFragment);
     }
+
 
     @Override
     public void onGetGlobalDataFailed(String error) {
@@ -79,14 +98,20 @@ public class StatisticsActivity extends AppCompatActivity implements StatisticsC
     }
 
 
-    private void setupViewPager(ViewPager viewPager, GlobalData globalData) {
+    private void setupViewPager(Fragment pieChartFragment, Fragment barChartFragment) {
+
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        TabLayout tlCharts  = (TabLayout) findViewById(R.id.tl_charts);
+        tlCharts.setupWithViewPager(viewPager);
+
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new PieChartFragment().setGlobalData(globalData), getResources().getString(R.string.general));
-        adapter.addFragment(new BarChartFragment().setGlobalData(globalData), getResources().getString(R.string.specific));
+        adapter.addFragment(pieChartFragment, getResources().getString(R.string.general));
+        adapter.addFragment(barChartFragment, getResources().getString(R.string.specific));
         viewPager.setAdapter(adapter);
     }
 
 
+    /** button on BarChartFragment*/
     public void onClickShowInfo(View view) {
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
     }
@@ -104,12 +129,15 @@ public class StatisticsActivity extends AppCompatActivity implements StatisticsC
     }
 
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+    class ViewPagerAdapter extends FragmentPagerAdapter implements Serializable {
+        private final List<Fragment> mFragmentList      = new ArrayList<>();
+        private final List<String>   mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
+        public ViewPagerAdapter(FragmentManager manager) { super(manager); }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
         }
 
         @Override
@@ -122,16 +150,8 @@ public class StatisticsActivity extends AppCompatActivity implements StatisticsC
             return mFragmentList.size();
         }
 
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
         @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
+        public CharSequence getPageTitle(int position) { return mFragmentTitleList.get(position); }
     }
-
 
 }

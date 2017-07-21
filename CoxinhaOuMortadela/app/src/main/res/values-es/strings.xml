@@ -43,6 +43,9 @@
     <string name="verified_users">"Verified Users: "</string>
     <string name="general">"General"</string>
     <string name="specific">"Specific"</string>
+    <string name="statistics_info_title">"Informação"</string>
+    <string name="statistics_info_body">"Estatísticas geradas a partir de dados dos usuários do aplicativo"</string>
+
 
 
     <!-- info -->

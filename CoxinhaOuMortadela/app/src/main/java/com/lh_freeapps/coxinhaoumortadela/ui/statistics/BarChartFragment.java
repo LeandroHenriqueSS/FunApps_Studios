@@ -65,6 +65,7 @@ public class BarChartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        setRetainInstance(true);
         View inflate = inflater.inflate(R.layout.fragment_bar_chart, container, false);
 
         chart = (HorizontalBarChart) inflate.findViewById(R.id.chart);

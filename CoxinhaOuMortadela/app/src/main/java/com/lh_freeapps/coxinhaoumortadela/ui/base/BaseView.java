@@ -6,5 +6,4 @@ package com.lh_freeapps.coxinhaoumortadela.ui.base;
  */
 public interface BaseView {
 
-
 }

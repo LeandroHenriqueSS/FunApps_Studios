@@ -9,6 +9,7 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,19 +42,28 @@ public class PieChartFragment extends Fragment {
     private int coxinhaPercentage;
     private int mortadelaPercentage;
 
+
+    private String TAG = "mTAG " + getClass().getSimpleName();
+
     public PieChartFragment() {
         // Required empty public constructor
+        Log.d(TAG, "PieChartFragment()");
     }
 
 
     /** Complement to the constructor */
     public Fragment setGlobalData(GlobalData globalData) {
 
+        Log.d(TAG, "setGlobalData: " + globalData.getNumCoxinha());
+
         coxinhaPercentage = Math.round(100*(globalData.getNumCoxinha() + globalData.getNumSuperCoxinha()) /
                 (float) (globalData.getTotalUsers() - globalData.getNumCoxinhaDeMortadela()));
 
         mortadelaPercentage = Math.round(100*(globalData.getNumMortadela() + globalData.getNumSuperMortadela()) /
                 (float) (globalData.getTotalUsers() - globalData.getNumCoxinhaDeMortadela()));
+
+
+        Log.d("TAGG setGlobalData", "" + coxinhaPercentage);
 
 
         return this;
@@ -63,9 +73,21 @@ public class PieChartFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        setRetainInstance(true);
+
         View inflate = inflater.inflate(R.layout.fragment_pie_chart, container, false);
 
+//        if (savedInstanceState  != null) {
+//            coxinhaPercentage   = savedInstanceState.getInt("COXINHA");
+//            mortadelaPercentage = savedInstanceState.getInt("MORTADELA");
+//        }
+
+        Log.d(TAG, "onCreateView: " + coxinhaPercentage);
+
+
         tfLight = Typeface.createFromAsset(getActivity().getAssets(), "OpenSans-Light.ttf");
+
 
         // set elements
         chart = (PieChart) inflate.findViewById(R.id.chart);
@@ -109,6 +131,7 @@ public class PieChartFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        Log.d(TAG, "onResume");
         chart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
         chart.spin(2300, 0f, 360f, Easing.EasingOption.EaseInOutQuad);
     }
@@ -125,6 +148,8 @@ public class PieChartFragment extends Fragment {
     }
 
     private void setData() {
+
+        Log.d(TAG, "setData: " + coxinhaPercentage);
 
         ArrayList<PieEntry> entries = new ArrayList<>();
         entries.add(new PieEntry(coxinhaPercentage  , "Coxinha"  , null));
@@ -149,9 +174,21 @@ public class PieChartFragment extends Fragment {
         chart.setData(data);
 
         chart.invalidate();
+        chart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
+        chart.spin(2300, 0f, 360f, Easing.EasingOption.EaseInOutQuad);
     }
 
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("COXINHA"  , coxinhaPercentage);
+        outState.putInt("MORTADELA", mortadelaPercentage);
+    }
+
+
+    /** Make PieChart shows percentage values */
     private class PercentFormatterAdapter extends PercentFormatter {
 
         public PercentFormatterAdapter() {
@@ -171,5 +208,6 @@ public class PieChartFragment extends Fragment {
         }
 
     }
+
 
 }

@@ -8,10 +8,10 @@
 
 
     <!-- descriptions for the ResultActivity -->
-    <string name="result_mortadela">Mortadela. Sua ideologia de esquerda é predomitante, apesar de alguns pensamentos de direita. A luta a favor da igualdade social e do direito dos cidadões mais pobres é a sua principal bandeira</string>
-    <string name="result_super_mortadela">Super Mortadela. Sua ideologia de esquerda é clara e expressiva.  Para você, a luta por igualdade social e direitos dos cidadões mais pobres é de vital importancia para o futuro do país</string>
+    <string name="result_mortadela">Mortadela. Sua ideologia de esquerda é predominante, apesar de alguns pensamentos de direita. A luta a favor da igualdade social e do direito dos cidadãos mais pobres é a sua principal bandeira</string>
+    <string name="result_super_mortadela">Super Mortadela. Sua ideologia de esquerda é clara e expressiva.  Para você, a luta por igualdade social e direitos dos cidadãos mais pobres é de vital importância para o futuro do país</string>
 
-    <string name="result_coxinha">Coxinha. Sua ideologia de direita é predomitante, apesar de alguns pensamentos de esquerda. Para você, a luta por um sistema mais justo e eficiente é de vital importancia para o futuro do país</string>
+    <string name="result_coxinha">Coxinha. Sua ideologia de direita é predominante, apesar de alguns pensamentos de esquerda. Para você, a luta por um sistema mais justo e eficiente é de vital importância para o futuro do país</string>
     <string name="result_super_coxinha">Super Coxinha. Sua ideologia de direita é clara e expressiva. Seu senso afiado de justiça é sua principal bandeira, o que lhe faz lutar por leis bem mais rígidas e um sistema de governo mais eficiente</string>
 
     <string name="result_draw">Coxinha de Mortadela (centro). Você é uma perfeita combinação que reúne pensamentos de ambas ideologias. Seus ideais e anseios são particulares e estão aquém de ideologias extremistas</string>
@@ -38,11 +38,15 @@
     <string name="tv_sentence">Sou a favor da prisão perpétua ou pena de morte</string>
     <string name="tv_current_sentence">1 / 20</string>
     <string name="tv_percentage">50%</string>
-    <string name="tv_result_description">Super Mortadela. Sua ideologia de esquerda é clara e expressiva.  Para você, A luta por igualdade social e direitos dos cidadões mais pobres é de vital importancia para o futuro do país.</string>
+    <string name="tv_result_description">Super Mortadela. Sua ideologia de esquerda é clara e expressiva.  Para você, A luta por igualdade social e direitos dos cidadãos mais pobres é de vital importância para o futuro do país.</string>
     <string name="sharing_chooser">Compartilhar via</string>
     <string name="verified_users">"Usuários Avaliados: "</string>
     <string name="general">"Geral"</string>
     <string name="specific">"Específico"</string>
+    <string name="statistics_info_title">"Informação"</string>
+    <string name="statistics_info_body">"Estatísticas geradas a partir de dados dos usuários do aplicativo"</string>
+
+
 
 
     <string name="info" formatted="false"><b>▸ Coxinha:</b> direita\n\n<b>▸ Super Coxinha:</b> extrema direita\n\n<b>▸ Mortadela:</b> esquerda\n\n<b>▸ Super Mortadela:</b> extrema esquerda\n\n<b>▸ Coxinha de Mortadela:</b> centro</string>

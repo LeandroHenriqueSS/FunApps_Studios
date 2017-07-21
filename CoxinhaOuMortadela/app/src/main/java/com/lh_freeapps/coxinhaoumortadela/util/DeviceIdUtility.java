@@ -5,6 +5,10 @@ import android.provider.Settings;
 
 /**
  * Created by Leandro on 07/05/2017.
+ *
+ * Class used for retrieving the hexadecimal value of the user's device that will represent the user ID in the database.
+ * That number is unique for each android device
+ *
  */
 
 public final class DeviceIdUtility {

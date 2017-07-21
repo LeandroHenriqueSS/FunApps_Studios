@@ -9,10 +9,11 @@ import android.widget.Button;
 import com.lh_freeapps.coxinhaoumortadela.R;
 import com.lh_freeapps.coxinhaoumortadela.di.component.DaggerActivityComponent;
 import com.lh_freeapps.coxinhaoumortadela.di.module.ActivityModule;
-import com.lh_freeapps.coxinhaoumortadela.util.ButtonHighlighterOnTouchListener;
+import com.lh_freeapps.coxinhaoumortadela.util.HighlighterOnTouchListener;
 import com.lh_freeapps.coxinhaoumortadela.util.TextSizeUtility;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import butterknife.ButterKnife;
 
 public class FirstScreenActivity extends Activity implements FirstScreenContract.View {
@@ -21,7 +22,7 @@ public class FirstScreenActivity extends Activity implements FirstScreenContract
 
     @BindView(R.id.bt_start_quiz) Button btStartQuiz;
     @BindView(R.id.bt_my_result)  Button btResult;
-    @BindView(R.id.bt_ranks)      Button btRanks;
+    @BindView(R.id.bt_statistics) Button btStatistics;
 
 
     @Override
@@ -31,15 +32,16 @@ public class FirstScreenActivity extends Activity implements FirstScreenContract
         ButterKnife.bind(this);
 
         // set ImageButton highlighter on touch
-        btStartQuiz.setOnTouchListener(new ButtonHighlighterOnTouchListener());
-        btResult   .setOnTouchListener(new ButtonHighlighterOnTouchListener());
-        btRanks    .setOnTouchListener(new ButtonHighlighterOnTouchListener());
+        btStatistics.setOnTouchListener(HighlighterOnTouchListener.getInstance());
+        btStartQuiz .setOnTouchListener(HighlighterOnTouchListener.getInstance());
+        btResult    .setOnTouchListener(HighlighterOnTouchListener.getInstance());
+
 
         // set text size
         int textSize = TextSizeUtility.getRecommendedTextSize(this) -2;
-        btRanks    .setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
-        btResult   .setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
-        btStartQuiz.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+        btStatistics.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+        btStartQuiz .setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+        btResult    .setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
 
 
         // inject mvp-presenter
@@ -48,20 +50,20 @@ public class FirstScreenActivity extends Activity implements FirstScreenContract
                 .build()
                 .getFirstScreenPresenter();
 
-        System.out.println(presenter == null);
-
     }
 
-
-    public void onClickStartQuiz(View view) {
+    @OnClick(R.id.bt_start_quiz)
+    public void showQuiz(View view) {
         presenter.startQuizActivity();
     }
 
-    public void onClickShowResultActivity(View view) {
+    @OnClick(R.id.bt_my_result)
+    public void showResult(View view) {
         presenter.startResultActivity();
     }
 
-    public void onClickShowStatistics(View view) {
+    @OnClick(R.id.bt_statistics)
+    public void showStatistics(View view) {
         presenter.startStatisticsActivity();
     }
 

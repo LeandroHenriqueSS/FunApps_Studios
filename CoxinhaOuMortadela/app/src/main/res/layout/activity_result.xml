@@ -20,7 +20,7 @@
         android:layout_weight=".415">
 
         <ImageView
-            android:id="@+id/resultImg"
+            android:id="@+id/result_img"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="center"
@@ -52,8 +52,6 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight=".07"
-        android:layout_gravity="left"
-        android:gravity="left"
         android:background="@drawable/result_bar"
         android:orientation="horizontal">
 
@@ -62,7 +60,6 @@
             android:id="@+id/result_line"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:layout_gravity="left"
             android:contentDescription="line"
             android:src="@drawable/result_line" />
 
@@ -106,7 +103,6 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
-            android:onClick="onClickReturnButton"
             android:scaleType="centerInside"
             android:contentDescription="@string/cd_bt_back"
             android:src="@drawable/bt_back" />
@@ -118,7 +114,6 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
-            android:onClick="onClickShareButton"
             android:scaleType="centerInside"
             android:contentDescription="@string/cd_bt_share"
             android:src="@drawable/bt_share" />
@@ -131,7 +126,6 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
-            android:onClick="onClickShareButton"
             android:scaleType="centerInside"
             android:contentDescription="@string/cd_bt_share_facebook"
             android:src="@drawable/bt_facebook" />

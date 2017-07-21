@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="strongColor"  format="reference|color" />
+    <attr name="labelColor"   format="reference|color" />
+    <attr name="dividerColor" format="reference|color" />
+    <attr name="gridColor"    format="reference|color" />
+
+
+</resources>

@@ -30,7 +30,7 @@ public interface ResultContract {
 
         void showResult(ViewGroup viewGroup, android.view.View resultLine, WindowManager windowManager);
 
-        void shareImage(ViewGroup viewGroup, android.view.View view);
+        void shareResult(ViewGroup viewGroup, android.view.View view);
     }
 
 }

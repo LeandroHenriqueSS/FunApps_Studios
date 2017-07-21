@@ -27,17 +27,17 @@ public class ActivityModule {
         this.view = view;
     }
 
-
     @Provides
     @PerActivity
     public FirstScreenContract.Presenter provideFirsScreenPresenter() {
-        return new FirstScreenPresenter(view);
+        return FirstScreenPresenter.getInstance(view);
     }
 
     @Provides
     @PerActivity
     public QuizContract.Presenter provideQuizPresenter() {
-        return new QuizPresenter(view);
+//        return new QuizPresenter(view);
+        return QuizPresenter.getInstance(view);
     }
 
     @Provides

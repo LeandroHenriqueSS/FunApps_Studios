@@ -10,11 +10,12 @@ import android.widget.TextView;
 import com.lh_freeapps.coxinhaoumortadela.R;
 import com.lh_freeapps.coxinhaoumortadela.di.component.DaggerActivityComponent;
 import com.lh_freeapps.coxinhaoumortadela.di.module.ActivityModule;
-import com.lh_freeapps.coxinhaoumortadela.util.ButtonHighlighterOnTouchListener;
+import com.lh_freeapps.coxinhaoumortadela.util.HighlighterOnTouchListener;
 import com.lh_freeapps.coxinhaoumortadela.util.TextSizeUtility;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class QuizActivity extends Activity implements QuizContract.View {
@@ -24,8 +25,8 @@ public class QuizActivity extends Activity implements QuizContract.View {
     @BindView(R.id.quizCurrentSentence) TextView tvSentenceNumber;
     @BindView(R.id.quizText)            TextView tvSentence;
 
-    @BindView(R.id.no)  ImageButton ibNo;
-    @BindView(R.id.yes) ImageButton ibYes;
+    @BindView(R.id.bt_no)  ImageButton ibNo;
+    @BindView(R.id.bt_yes) ImageButton ibYes;
 
 
     @Override
@@ -40,8 +41,8 @@ public class QuizActivity extends Activity implements QuizContract.View {
         tvSentenceNumber.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize - 4);
 
         // set ImageButton highlighter on touch
-        ibNo .setOnTouchListener(new ButtonHighlighterOnTouchListener());
-        ibYes.setOnTouchListener(new ButtonHighlighterOnTouchListener());
+        ibNo .setOnTouchListener(HighlighterOnTouchListener.getInstance());
+        ibYes.setOnTouchListener(HighlighterOnTouchListener.getInstance());
 
         // inject mvp-presenter
         presenter = DaggerActivityComponent.builder()
@@ -57,11 +58,20 @@ public class QuizActivity extends Activity implements QuizContract.View {
         tvSentence.setText(sentence);
     }
 
-    public void onClickYesButton(View view) {
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        presenter.cleanData();
+    }
+
+    @OnClick(R.id.bt_yes)
+    public void yesButton(View view) {
         presenter.onClickYesButton();
     }
 
-    public void onClickNoButton(View view) {
+
+    @OnClick(R.id.bt_no)
+    public void noButton(View view) {
         presenter.onClickNoButton();
     }
 }

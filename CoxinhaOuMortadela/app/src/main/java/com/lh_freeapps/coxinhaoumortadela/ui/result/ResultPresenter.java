@@ -25,29 +25,40 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.lh_freeapps.coxinhaoumortadela.data.model.ResultType.*;
+import static com.lh_freeapps.coxinhaoumortadela.data.model.ResultType.COXINHA;
+import static com.lh_freeapps.coxinhaoumortadela.data.model.ResultType.MORTADELA;
+import static com.lh_freeapps.coxinhaoumortadela.data.model.ResultType.SUPER_COXINHA;
+import static com.lh_freeapps.coxinhaoumortadela.data.model.ResultType.SUPER_MORTADELA;
+import static com.lh_freeapps.coxinhaoumortadela.data.model.ResultType.getTypeByCoxinhaLevel;
 
 
 /**
  * Created by Leandro on 28/04/2017.
  */
 
+
 public class ResultPresenter implements ResultContract.Presenter {
 
     private ResultContract.View resultView;
 
-    private User user;
-
     private Context context;
 
+    private User user;
 
-    public ResultPresenter(BaseView resultView) {
-        this.resultView = (ResultContract.View) resultView;
-        this.context    = (Context) resultView;
+
+
+    public ResultPresenter(BaseView view) {
+        resultView = (ResultContract.View) view;
+        context    = (Context) view;
     }
+
 
     @Override
     public void setUserParams(int coxinhaLevel, int mortadelaLevel, boolean isOnCloud) {
+        // if already setted, return
+        if (user != null)
+            return;
+
         user = new User();
         user.setUserId(DeviceIdUtility.getSimplifiedDeviceID(context));
         user.setCoxinhaLevel(coxinhaLevel);
@@ -142,8 +153,6 @@ public class ResultPresenter implements ResultContract.Presenter {
         // show animation
         resultLine.startAnimation(anim);
 
-        //TODO: maybe create an animation for the result line when it starts and end to move
-        // like make it bigger for a while
     }
 
 
@@ -198,7 +207,7 @@ public class ResultPresenter implements ResultContract.Presenter {
 
 
     @Override
-    public void shareImage(ViewGroup viewGroup, View view) {
+    public void shareResult(ViewGroup viewGroup, View view) {
         new ShareResultImageUtil(context).shareResult(viewGroup, view);
     }
 

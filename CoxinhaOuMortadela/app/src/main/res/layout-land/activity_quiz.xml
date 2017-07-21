@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/goodBlue"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".13"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/cd_simple_logo"
+        android:src="@drawable/simple_logo" />
+
+
+    <View
+        android:id="@+id/stroke"
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/quiz_navy_blue_border" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".87"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:weightSum="1">
+
+        <!-- Blank View --> <View
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".05" />
+
+        <TextView
+            android:id="@+id/quizText"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center|center_vertical"
+            android:layout_weight=".60"
+            android:background="@drawable/round_rect_shape"
+            android:text="@string/tv_sentence"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/quizCurrentSentence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="-35dp"
+            android:text="@string/tv_current_sentence"
+            android:textColor="@android:color/tertiary_text_light"
+            android:textSize="20sp" />
+
+
+        <!-- Blank View --> <View
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".05" />
+
+        <!-- Buttons --> <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".30"
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <!-- Blank View --> <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/bt_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/bt_no"
+                android:contentDescription="@string/cd_bt_no"
+                android:background="@null" />
+
+            <!-- Blank View --> <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+            <ImageButton
+                android:id="@+id/bt_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:onClick="onClickYesButton"
+                android:scaleType="centerInside"
+                android:src="@drawable/bt_yes"
+                android:contentDescription="@string/cd_bt_yes"
+                android:background="@null" />
+
+
+            <!-- Blank View --> <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+
+        <!-- Blank View --> <View
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".05" />
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

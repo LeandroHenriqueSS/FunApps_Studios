@@ -1,14 +1,30 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:con="com.lh_freeapps.coxinhaoumortadela.ui.statistics.PieChartFragment">
+    tools:con="com.lh_freeapps.coxinhaoumortadela.ui.statistics.BarChartFragment">
+
+    <!-- Blank View --> <View
+    android:id="@+id/begin_of_chart_area"
+    android:layout_width="fill_parent"
+    app:layout_heightPercent="4%" />
+
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/chart"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_below="@+id/begin_of_chart_area"
+        app:layout_heightPercent="92%"/>
 
-</FrameLayout>
+
+    <!-- Blank View --> <View
+    android:id="@+id/end_page"
+    android:layout_width="fill_parent"
+    android:layout_below="@+id/chart"
+    app:layout_heightPercent="4%" />
+
+
+</android.support.percent.PercentRelativeLayout>
